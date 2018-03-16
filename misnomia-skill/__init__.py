@@ -15,11 +15,11 @@ from mycroft.util.log import LOG
 # from the MycroftSkill class.  You extend this class as shown below.
 
 # TODO: Change "Template" to a unique name for your skill
-class TemplateSkill(MycroftSkill):
+class MisnomiaSkill(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(TemplateSkill, self).__init__(name="TemplateSkill")
+        super(MisnomiaSkill, self).__init__(name="MisnomiaSkill")
         
         # Initialize working variables used within the skill.
         self.count = 0
@@ -35,20 +35,33 @@ class TemplateSkill(MycroftSkill):
     #   'Hello world'
     #   'Howdy you great big world'
     #   'Greetings planet earth'
-    @intent_handler(IntentBuilder("").require("Hello").require("World"))
-    def handle_hello_world_intent(self, message):
+    @intent_handler(IntentBuilder("").require("You").require("Hairy").require("Food"));
+    def handle_you_hairy_food_intent(self, message):
         # In this case, respond by simply speaking a canned response.
         # Mycroft will randomly speak one of the lines from the file
         #    dialogs/en-us/hello.world.dialog
-        self.speak_dialog("hello.world")
-
-    @intent_handler(IntentBuilder("").require("Count").require("Dir"))
-    def handle_count_intent(self, message):
-        if message.data["Dir"] == "up":
-            self.count += 1
-        else:  # assume "down"
-            self.count -= 1
-        self.speak_dialog("count.is.now", data={"count": self.count})
+        self.speak_dialog("me.bang.thing")
+        
+    @intent_handler(IntentBuilder("").require("Rock").require("Sleep").require("Big"));
+    def handle_you_rock_sleep_big(self, message):
+        # In this case, respond by simply speaking a canned response.
+        # Mycroft will randomly speak one of the lines from the file
+        #    dialogs/en-us/hello.world.dialog
+        self.speak_dialog("water.smelly.sun")
+        
+    @intent_handler(IntentBuilder("").require("Fire").require("Small").require("Go"));
+    def handle_you_fire_small_go(self, message):
+        # In this case, respond by simply speaking a canned response.
+        # Mycroft will randomly speak one of the lines from the file
+        #    dialogs/en-us/hello.world.dialog
+        self.speak_dialog("tree.cave.verisimilitude")  
+        
+    @intent_handler(IntentBuilder("").require("Wood").require("Air").require("Jupiter"));
+    def handle_you_fire_small_go(self, message):
+        # In this case, respond by simply speaking a canned response.
+        # Mycroft will randomly speak one of the lines from the file
+        #    dialogs/en-us/hello.world.dialog
+        self.speak_dialog("earth.stone.wake")           
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
@@ -62,4 +75,4 @@ class TemplateSkill(MycroftSkill):
 # The "create_skill()" method is used to create an instance of the skill.
 # Note that it's outside the class itself.
 def create_skill():
-    return TemplateSkill()
+    return MisnomiaSkill()
